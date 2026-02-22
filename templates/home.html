@@ -1,3 +1,127 @@
-<h1>
-    Hello World
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>California House Price Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 420px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2a5298;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2a5298;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🏠 House Price Predictor</h1>
+
+    <form action="/predict" method="post">
+
+        <label>Median Income (MedInc)</label>
+        <input type="number" step="any" name="MedInc" required>
+
+        <label>House Age</label>
+        <input type="number" step="any" name="HouseAge" required>
+
+        <label>Average Rooms</label>
+        <input type="number" step="any" name="AveRooms" required>
+
+        <label>Average Bedrooms</label>
+        <input type="number" step="any" name="AveBedrms" required>
+
+        <label>Population</label>
+        <input type="number" step="any" name="Population" required>
+
+        <label>Average Occupancy</label>
+        <input type="number" step="any" name="AveOccup" required>
+
+        <label>Latitude</label>
+        <input type="number" step="any" name="Latitude" required>
+
+        <label>Longitude</label>
+        <input type="number" step="any" name="Longitude" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+
+    <footer>
+        Built with Flask & Scikit-Learn
+    </footer>
+
+</div>
+
+</body>
+</html>
